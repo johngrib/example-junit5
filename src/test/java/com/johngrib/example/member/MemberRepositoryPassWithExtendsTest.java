@@ -1,28 +1,21 @@
 package com.johngrib.example.member;
 
+import lombok.Getter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 @DisplayName("MemberRepository")
 class MemberRepositoryPassWithExtendsTest {
 
-  MemberRepository repository;
-
+  @ExtendWith(SpringExtension.class)
   @DataJpaTest
+  @Getter
   class JpaTest {
     @Autowired MemberRepository memberRepository;
-
-    public MemberRepository getMemberRepository() {
-      if (repository == null) {
-        repository = memberRepository;
-      }
-      return repository;
-    }
   }
 
   final String givenName = "홍길동";
